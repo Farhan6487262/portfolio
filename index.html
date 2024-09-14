@@ -10,11 +10,12 @@
             margin: 0;
             padding: 0;
             color: #333;
+            line-height: 1.6;
         }
         header {
             background: #333;
             color: #fff;
-            padding: 1rem 0;
+            padding: 1rem;
             text-align: center;
         }
         nav ul {
@@ -31,15 +32,52 @@
         }
         .container {
             padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .portfolio-item {
-            margin-bottom: 1.5rem;
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .profile img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-right: 1rem;
+        }
+        .profile h1 {
+            margin: 0;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .tabs button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+        .tabs button.active {
+            background: #555;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
         }
         footer {
             background: #333;
             color: #fff;
             text-align: center;
-            padding: 1rem 0;
+            padding: 1rem;
             position: fixed;
             bottom: 0;
             width: 100%;
@@ -51,44 +89,66 @@
         <h1>Farhan Khalid</h1>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="container" id="home">
-        <h2>Welcome to My Portfolio</h2>
-        <p>Hello! I'm Farhan Khalid, a passionate [Your Profession]. Explore my work and learn more about my skills and experience.</p>
-    </div>
-
-    <div class="container" id="about">
-        <h2>About Me</h2>
-        <p>I am a [Your Profession] with a background in [Your Field]. I have worked on various projects including [mention some notable projects]. My skills include [list your skills].</p>
-    </div>
-
-    <div class="container" id="portfolio">
-        <h2>My Work</h2>
-        <div class="portfolio-item">
-            <h3>Project Title 1</h3>
-            <p>Description of Project 1. <a href="#">View More</a></p>
+    <div class="container">
+        <div class="profile">
+            <img src="profile.jpg" alt="Farhan Khalid">
+            <div>
+                <h1>Farhan Khalid</h1>
+                <p>Welcome to my portfolio! Explore my work and learn more about me.</p>
+            </div>
         </div>
-        <div class="portfolio-item">
-            <h3>Project Title 2</h3>
-            <p>Description of Project 2. <a href="#">View More</a></p>
-        </div>
-        <!-- Add more portfolio items as needed -->
-    </div>
 
-    <div class="container" id="contact">
-        <h2>Contact Me</h2>
-        <p>You can reach me via email at <a href="mailto:farhan@example.com">farhan@example.com</a></p>
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('about')">About</button>
+            <button class="tab-button" onclick="showTab('contact')">Contact</button>
+        </div>
+
+        <div id="about" class="tab-content active">
+            <h2>About Me</h2>
+            <p>Hello! I’m Farhan Khalid, a [Your Profession] based in [Your Location]. With a background in [Your Field], I specialize in [Your Specialization]. I’ve worked on various projects including [mention some notable projects]. My skills include [list your skills].</p>
+        </div>
+
+        <div id="contact" class="tab-content">
+            <h2>Contact Me</h2>
+            <p>Feel free to get in touch with me through the following:</p>
+            <ul>
+                <li>Email: <a href="mailto:farhan@example.com">farhan@example.com</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/farhankhalid" target="_blank">linkedin.com/in/farhankhalid</a></li>
+                <!-- Add other contact methods if needed -->
+            </ul>
+        </div>
     </div>
 
     <footer>
         <p>&copy; 2024 Farhan Khalid. All rights reserved.</p>
     </footer>
+
+    <script>
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                if (tab.id === tabId) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => {
+                if (button.textContent.toLowerCase() === tabId) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
